@@ -1,4 +1,18 @@
+
 # 🎓 EduBoard
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Responsive](https://img.shields.io/badge/Responsive-Yes-success?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/badivana/Eduboard?style=for-the-badge)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/badivana/Eduboard?style=for-the-badge)
+![GitHub Stars](https://img.shields.io/github/stars/badivana/Eduboard?style=for-the-badge)
+![GitHub Forks](https://img.shields.io/github/forks/badivana/Eduboard?style=for-the-badge)
+![GitHub Issues](https://img.shields.io/github/issues/badivana/Eduboard?style=for-the-badge)
+
+
 
 A modern and responsive educational website built using **HTML, CSS, and JavaScript**. EduBoard provides a clean interface for showcasing courses, pricing plans, and educational services.
 
