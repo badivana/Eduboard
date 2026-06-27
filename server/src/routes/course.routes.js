@@ -12,6 +12,8 @@ import {
 import { protect, authorize } from '../middleware/auth.middleware.js';
 import { validate } from '../middleware/validate.middleware.js';
 
+console.log("✅ course.routes.js loaded");
+
 const router = Router();
 
 router.get('/', getCourses);
