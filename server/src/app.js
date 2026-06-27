@@ -16,7 +16,9 @@ import contactRoutes from './routes/contact.routes.js';
 import planRoutes from './routes/plan.routes.js';
 
 import { notFound, errorHandler } from './middleware/error.middleware.js';
-
+app.get('/hello-chatgpt', (req, res) => {
+  res.send('HELLO FROM CHATGPT');
+});
 const app = express();
 
 // Behind Render/Vercel's proxy in production — needed for correct client IPs
