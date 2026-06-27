@@ -21,3 +21,5 @@ npm-debug.log*
 Thumbs.db
 
 .claude
+
+atlas-credentials.env
