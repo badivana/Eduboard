@@ -1,0 +1,22 @@
+name: Keep Render backend awake
+
+# Render's free tier spins the service down after ~15 min of inactivity, which
+# causes a ~30s cold start on the next request. This job pings the health
+# endpoint on a schedule so the service stays warm.
+
+on:
+  schedule:
+    # Every ~10 minutes. Offset minutes (not :00) to avoid GitHub's top-of-hour
+    # congestion, which can delay scheduled runs.
+    - cron: "4,14,24,34,44,54 * * * *"
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping health endpoint
+        run: |
+          curl -fsS --retry 3 --retry-delay 10 --max-time 90 \
+            https://eduboard-nbb0.onrender.com/api/health
+          echo "Pinged at $(date -u)"
