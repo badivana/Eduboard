@@ -1,0 +1,22 @@
+# Render Blueprint — deploys the EduBoard Express API as an always-on web service.
+# In Render: New → Blueprint → connect this repo. Then set MONGO_URI and CLIENT_URL.
+services:
+  - type: web
+    name: eduboard-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: JWT_SECRET
+        generateValue: true # Render generates a strong secret for you
+      - key: MONGO_URI
+        sync: false # set in dashboard — your MongoDB Atlas connection string
+      - key: CLIENT_URL
+        sync: false # set in dashboard — your Vercel frontend URL (no trailing slash)

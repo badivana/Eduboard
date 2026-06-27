@@ -18,6 +18,12 @@ import { notFound, errorHandler } from './middleware/error.middleware.js';
 
 const app = express();
 
+// Behind Render/Vercel's proxy in production — needed for correct client IPs
+// (rate limiting) and for secure cookies to be issued over forwarded HTTPS.
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
 // --- Security & parsing middleware ---
 app.use(helmet());
 app.use(
