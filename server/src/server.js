@@ -10,7 +10,7 @@ const start = async () => {
   try {
     await connectDB();
     app.listen(PORT, () => {
-      console.log(`🚀 EduBoard API running on http://localhost:${PORT} [${process.env.NODE_ENV}]`);
+      console.log(`🚀 EduBoard API running on port ${PORT} [${process.env.NODE_ENV}]`);
     });
   } catch (err) {
     console.error('❌ Failed to start server:', err.message);
