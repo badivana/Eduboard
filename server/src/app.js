@@ -72,5 +72,5 @@ app.use('/api/plans', planRoutes);
 // --- Error handling ---
 app.use(notFound);
 app.use(errorHandler);
-
+console.log("✅ routes mounted");
 export default app;
