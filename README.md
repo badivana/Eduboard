@@ -1,52 +1,49 @@
+# 🎓 EduBoard — Full-Stack MERN Learning Platform
 
-# 🎓 EduBoard
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Responsive](https://img.shields.io/badge/Responsive-Yes-success?style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![GitHub Repo Size](https://img.shields.io/github/repo-size/badivana/Eduboard?style=for-the-badge)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/badivana/Eduboard?style=for-the-badge)
-![GitHub Stars](https://img.shields.io/github/stars/badivana/Eduboard?style=for-the-badge)
-![GitHub Forks](https://img.shields.io/github/forks/badivana/Eduboard?style=for-the-badge)
-![GitHub Issues](https://img.shields.io/github/issues/badivana/Eduboard?style=for-the-badge)
 
-
-
-A modern and responsive educational website built using **HTML, CSS, and JavaScript**. EduBoard provides a clean interface for showcasing courses, pricing plans, and educational services.
-
-## 🌐 Live Demo
-
-🔗 https://eduboard-rho.vercel.app/
-
----
-
-## 📖 Overview
-
-EduBoard is a front-end educational website designed with simplicity and responsiveness in mind. It demonstrates the use of HTML, CSS, and JavaScript to build an attractive and user-friendly website suitable for educational institutions, online learning platforms, or course providers.
+EduBoard is a modern, production-style **e-learning platform** built with the **MERN stack**
+(MongoDB, Express, React, Node.js). It started life as a static HTML site and has been rebuilt
+into a full application with authentication, a course catalog, enrollments, reviews, and a
+student dashboard.
 
 ---
 
 ## ✨ Features
 
-* 📱 Fully Responsive Design
-* 🎨 Modern User Interface
-* 🏠 Home Page
-* 📚 Course Section
-* 💰 Pricing Plans
-* 📞 Contact Section
-* 📜 Smooth Scrolling Navigation
-* ⚡ Fast Loading
-* 🖥️ Cross-Browser Compatible
+### Frontend (React + Vite + Tailwind)
+- 🎨 Attractive, fully responsive UI with the EduBoard brand
+- 🏠 Landing page with hero, features, featured courses & CTA
+- 📚 Course catalog with **search, category filters, sorting & pagination**
+- 📖 Rich course detail page — curriculum, instructor, reviews, enroll flow
+- 🔐 Register / login with JWT (httpOnly cookie + bearer token)
+- 📊 Student dashboard — enrolled courses, progress tracking, profile editing
+- 💰 Dynamic pricing page & contact form
+- 🔔 Toast notifications, protected routes, loading states
+
+### Backend (Node + Express + MongoDB)
+- 🔑 **JWT authentication** with `student` / `instructor` / `admin` roles
+- 🧱 RESTful API for courses, enrollments, reviews, plans, contact & users
+- 🛡️ Security hardening: `helmet`, CORS, rate limiting, `express-mongo-sanitize`, bcrypt
+- ✅ Request validation with `express-validator`
+- 🗄️ Mongoose models with relations, virtuals, text search & auto-rating aggregation
+- ⚠️ Centralized error handling & async wrappers
+- 🌱 Seed script with demo users, courses, reviews & plans
 
 ---
 
-## 🛠️ Technologies Used
+## 🧱 Tech Stack
 
-* HTML5
-* CSS3
-* JavaScript (ES6)
+| Layer     | Technology |
+|-----------|------------|
+| Frontend  | React 18, Vite, React Router, Tailwind CSS, Axios, React Hot Toast |
+| Backend   | Node.js, Express, Mongoose, JWT, bcryptjs, express-validator |
+| Database  | MongoDB |
 
 ---
 
@@ -54,110 +51,121 @@ EduBoard is a front-end educational website designed with simplicity and respons
 
 ```text
 Eduboard/
+├── client/                  # React + Vite frontend
+│   ├── src/
+│   │   ├── api/             # Axios instance
+│   │   ├── components/      # Navbar, Footer, CourseCard, ...
+│   │   ├── context/         # AuthContext
+│   │   ├── pages/           # Home, Courses, CourseDetail, Dashboard, ...
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── tailwind.config.js
+│   └── vite.config.js
 │
-├── index.html
-├── pricing.html
-├── style.css
-├── symbol.css
-├── app.js
-├── smooth-scroll.min.js
-├── smooth-scroll.polyfills.min.js
-├── README.md
-└── images/
+├── server/                  # Express + MongoDB backend
+│   ├── src/
+│   │   ├── config/          # DB connection
+│   │   ├── controllers/     # Route handlers
+│   │   ├── middleware/      # auth, error, validation
+│   │   ├── models/          # User, Course, Enrollment, Review, Plan, Contact
+│   │   ├── routes/          # API routes
+│   │   ├── utils/           # token, seed
+│   │   ├── app.js
+│   │   └── server.js
+│   └── .env.example
+│
+└── package.json             # Root scripts to run both apps
 ```
 
 ---
 
 ## 🚀 Getting Started
 
-### Clone the repository
+### Prerequisites
+- **Node.js** ≥ 18
+- **MongoDB** running locally (`mongodb://127.0.0.1:27017`) or a MongoDB Atlas URI
+
+### 1. Clone & install
 
 ```bash
 git clone https://github.com/badivana/Eduboard.git
-```
-
-### Navigate to the project
-
-```bash
 cd Eduboard
+npm run install:all      # installs both server and client deps
 ```
 
-### Run the project
-
-Simply open `index.html` in your preferred web browser.
-
-No additional setup or installation is required.
-
----
-
-## 📸 Screenshots
-
-You can add screenshots of the following pages:
-
-* Home Page
-* Courses
-* Pricing
-* Contact
-
----
-
-## 📈 Future Improvements
-
-* Dark Mode
-* Student Login System
-* Course Enrollment
-* Backend Integration
-* Database Support
-* Payment Gateway
-* Search Functionality
-* Course Filtering
-* User Authentication
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repository
-2. Create a new branch
+### 2. Configure environment
 
 ```bash
-git checkout -b feature-name
+# Backend
+cp server/.env.example server/.env
+# then edit server/.env — set MONGO_URI and a strong JWT_SECRET
 ```
 
-3. Commit your changes
+The frontend needs no env in development (Vite proxies `/api` to the backend).
+
+### 3. Seed the database (optional but recommended)
 
 ```bash
-git commit -m "Add new feature"
+npm run seed
 ```
 
-4. Push to GitHub
+This creates demo accounts:
+
+| Role       | Email                  | Password     |
+|------------|------------------------|--------------|
+| Admin      | admin@eduboard.com     | admin123     |
+| Instructor | sarah@eduboard.com     | password123  |
+| Student    | student@eduboard.com   | password123  |
+
+### 4. Run the app (two terminals)
 
 ```bash
-git push origin feature-name
+npm run dev:server      # → http://localhost:5000  (API)
+npm run dev:client      # → http://localhost:5173  (web app)
 ```
 
-5. Open a Pull Request
+Open **http://localhost:5173**.
 
 ---
 
-## 👨‍💻 Author
+## 🔌 API Overview
 
-**Prajwal B T**
+Base URL: `http://localhost:5000/api`
 
-* GitHub: https://github.com/badivana
+| Method | Endpoint                      | Description                  | Access      |
+|--------|-------------------------------|------------------------------|-------------|
+| POST   | `/auth/register`              | Create account               | Public      |
+| POST   | `/auth/login`                 | Log in                       | Public      |
+| GET    | `/auth/me`                    | Current user                 | Auth        |
+| GET    | `/courses`                    | List/search/filter courses   | Public      |
+| GET    | `/courses/:slug`              | Course detail + reviews      | Public      |
+| POST   | `/courses`                    | Create course                | Instructor  |
+| POST   | `/enrollments`                | Enroll in a course           | Auth        |
+| GET    | `/enrollments/me`             | My enrollments               | Auth        |
+| PATCH  | `/enrollments/:id/progress`   | Update progress              | Auth        |
+| POST   | `/reviews`                    | Add/update a review          | Enrolled    |
+| GET    | `/plans`                      | Pricing plans                | Public      |
+| POST   | `/contact`                    | Submit contact form          | Public      |
+
+---
+
+## 🛠️ Root Scripts
+
+| Script                | Action                                 |
+|-----------------------|----------------------------------------|
+| `npm run install:all` | Install server + client dependencies   |
+| `npm run seed`        | Seed MongoDB with demo data            |
+| `npm run dev:server`  | Start the API in watch mode            |
+| `npm run dev:client`  | Start the Vite dev server              |
+| `npm run build`       | Build the frontend for production      |
+| `npm start`           | Start the production API server        |
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+MIT — feel free to use, modify, and distribute for educational purposes.
 
-Feel free to use, modify, and distribute this project for educational purposes.
+## 👨‍💻 Author
 
----
-
-## ⭐ Support
-
-If you found this project helpful, please consider giving it a ⭐ on GitHub.
+**Prajwal B T** — [github.com/badivana](https://github.com/badivana)

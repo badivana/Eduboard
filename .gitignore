@@ -1,3 +1,23 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Env
+.env
+.env.local
+**/.env
+
+# Build output
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
 .vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+.claude

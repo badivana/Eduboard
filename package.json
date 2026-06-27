@@ -1,0 +1,20 @@
+{
+  "name": "eduboard",
+  "version": "2.0.0",
+  "description": "EduBoard — a full-stack MERN e-learning platform",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "seed": "npm --prefix server run seed",
+    "dev": "concurrently --names \"API,WEB\" --prefix-colors \"green,cyan\" \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server start"
+  },
+  "keywords": ["mern", "education", "react", "express", "mongodb"],
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
