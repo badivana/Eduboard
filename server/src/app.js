@@ -56,6 +56,9 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'eduboard-api', time: new Date().toISOString() });
 });
 
+console.log("✅ Mounting course routes");
+app.use('/api/courses', courseRoutes);
+
 // --- Routes ---
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
