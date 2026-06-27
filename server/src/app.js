@@ -30,9 +30,35 @@ if (process.env.NODE_ENV === 'production') {
 
 // --- Security & parsing middleware ---
 app.use(helmet());
+
+// Explicit allow-list from env (comma-separated), plus any Vercel deployment
+// URL for this project. Vercel mints a new preview hostname every deploy, so we
+// match the project suffix instead of pinning a single URL.
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+const isAllowedOrigin = (origin) => {
+  // Non-browser clients (curl, server-to-server) send no Origin — allow them.
+  if (!origin) return true;
+  if (allowedOrigins.includes(origin)) return true;
+  try {
+    const { hostname } = new URL(origin);
+    // Your Vercel account's deployments, e.g. eduboard-<hash>-badivanas-projects.vercel.app
+    if (hostname.endsWith('-badivanas-projects.vercel.app')) return true;
+  } catch {
+    return false;
+  }
+  return false;
+};
+
 app.use(
   cors({
-    origin: (process.env.CLIENT_URL || 'http://localhost:5173').split(','),
+    origin: (origin, callback) =>
+      isAllowedOrigin(origin)
+        ? callback(null, true)
+        : callback(new Error(`Not allowed by CORS: ${origin}`)),
     credentials: true,
   })
 );
