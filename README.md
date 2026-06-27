@@ -1,3 +1,4 @@
+DEMO: https://eduboard-git-main-badivanas-projects.vercel.app
 # 🎓 EduBoard — Full-Stack MERN Learning Platform
 
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
