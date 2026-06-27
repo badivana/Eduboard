@@ -14,6 +14,25 @@ student dashboard.
 
 ---
 
+## 🌐 Live Demo
+
+| | URL |
+|---|---|
+| **Web app** (Vercel) | <https://eduboard-git-main-badivanas-projects.vercel.app> |
+| **API** (Render) | <https://eduboard-nbb0.onrender.com/api/health> |
+
+> ⏳ The API runs on Render's free tier and sleeps after ~15 min idle, so the **first**
+> request may take ~30s to wake. Subsequent requests are fast.
+
+**Try it** — log in with a seeded demo account:
+
+| Role | Email | Password |
+|------|-------|----------|
+| Student | `student@eduboard.com` | `password123` |
+| Admin | `admin@eduboard.com` | `admin123` |
+
+---
+
 ## ✨ Features
 
 ### Frontend (React + Vite + Tailwind)
@@ -159,6 +178,40 @@ Base URL: `http://localhost:5000/api`
 | `npm run dev:client`  | Start the Vite dev server              |
 | `npm run build`       | Build the frontend for production      |
 | `npm start`           | Start the production API server        |
+
+---
+
+## ☁️ Deployment
+
+EduBoard is deployed as three separate services:
+
+```text
+Browser ──> Vercel (React SPA) ──HTTPS /api──> Render (Express API) ──> MongoDB Atlas
+```
+
+| Piece | Host | Notes |
+|-------|------|-------|
+| Frontend | **Vercel** | Root dir `client`; needs `VITE_API_URL` = the Render API base URL (no trailing slash, no `/api`) |
+| Backend | **Render** | Root dir `server`; needs `MONGO_URI`, `CLIENT_URL`, `JWT_SECRET`, `NODE_ENV=production` |
+| Database | **MongoDB Atlas** | Network Access must allow `0.0.0.0/0` (Render uses dynamic IPs) |
+
+📖 **Full step-by-step guide:** see [`DEPLOYMENT.md`](./DEPLOYMENT.md).
+
+### Two gotchas worth knowing
+- **CORS** — the API only answers browsers from allowed origins. `app.js` accepts anything in
+  `CLIENT_URL` (comma-separated) **plus** this project's Vercel deployment URLs
+  (`*-badivanas-projects.vercel.app`), so preview deploys work without reconfiguring.
+- **Local DB ≠ cloud DB** — your local MongoDB and Atlas are separate. Production starts empty.
+  Seed Atlas **once** by pointing the seed script at it:
+  ```bash
+  cd server
+  # PowerShell:
+  $env:MONGO_URI="<your atlas uri>"; npm run seed; Remove-Item Env:MONGO_URI
+  # bash:
+  MONGO_URI="<your atlas uri>" npm run seed
+  ```
+  ⚠️ The seed **wipes all collections first** — only run it on an empty/throwaway database,
+  never after real users sign up.
 
 ---
 

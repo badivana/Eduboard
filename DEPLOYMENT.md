@@ -75,6 +75,11 @@ URL (e.g. `https://eduboard.vercel.app`, no trailing slash). Save → Render red
 This lets the API accept requests from your frontend. To allow multiple origins
 (e.g. a custom domain too), comma-separate them: `https://eduboard.vercel.app,https://eduboard.com`.
 
+> ℹ️ In addition to `CLIENT_URL`, the API (`server/src/app.js`) automatically allows this
+> project's Vercel deployment URLs (hostnames ending in `-badivanas-projects.vercel.app`),
+> so **preview deployments work without editing `CLIENT_URL`**. If you fork the project under
+> a different Vercel account, update that suffix check in `app.js` to match your own.
+
 ---
 
 ## ✅ Done
